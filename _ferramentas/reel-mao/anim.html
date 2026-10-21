@@ -1,0 +1,190 @@
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Bri;src:url(../node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Bri;src:url(../node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:Arc;src:url(../node_modules/@fontsource/archivo/files/archivo-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Arc;src:url(../node_modules/@fontsource/archivo/files/archivo-latin-600-normal.woff2);font-weight:600}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{background:#0A0E1A;color:#F4F2ED;font-family:Arc,'Noto Color Emoji',sans-serif;position:relative}
+.disp{font-family:Bri,'Noto Color Emoji';font-weight:800;letter-spacing:-.03em;line-height:1.04}
+.gold{color:#D2A94E}.muted{color:#A9B0C4}
+.el{position:absolute;left:0;right:0;text-align:center}
+#night{position:absolute;inset:0;opacity:0}
+.lamp{position:absolute;width:1400px;height:1400px;border-radius:50%;left:-620px;top:-520px;background:radial-gradient(circle,rgba(255,170,90,.22),rgba(255,170,90,0) 62%)}
+.duvet{position:absolute;left:-200px;right:-200px;bottom:-300px;height:900px;border-radius:50%;background:radial-gradient(ellipse at 50% 30%,#2a3350,#141a2c 70%);filter:blur(10px)}
+.screenglow{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-10px;top:500px;background:radial-gradient(circle,rgba(150,180,255,.16),rgba(150,180,255,0) 65%)}
+#phone{position:absolute;left:230px;top:600px;width:620px;height:1130px;border-radius:64px;background:#0F1628;border:10px solid #1d2336;overflow:hidden;box-shadow:0 50px 140px rgba(0,0,0,.6);z-index:3}
+.sb{display:flex;justify-content:space-between;padding:22px 40px 0;font-weight:600;font-size:24px}
+.scr{position:absolute;left:0;right:0;top:70px;bottom:0}
+.layer{position:absolute;inset:0;padding:22px 32px;opacity:0}
+.prof{display:flex;gap:24px;align-items:center;margin-top:14px}
+.avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#D2A94E,#8a6a2a);display:flex;align-items:center;justify-content:center;font-size:58px}
+.pname{font-family:Bri;font-weight:800;font-size:34px}
+.pstats{font-size:21px;color:#A9B0C4;margin-top:4px}
+.bio{margin-top:26px;font-size:25px;line-height:1.45}
+.link{display:inline-block;margin-top:10px;color:#8FB0FF;font-weight:600;font-size:25px;padding:4px 8px;border-radius:8px}
+.link.hl{background:rgba(143,176,255,.2)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:30px}
+.grid i{display:block;aspect-ratio:1;background:rgba(244,242,237,.06);border-radius:5px}
+.bk-head{font-family:Bri;font-weight:800;font-size:30px;display:flex;align-items:center;gap:14px}
+.bk-logo{width:52px;height:52px;border-radius:13px;background:linear-gradient(135deg,#D2A94E,#8a6a2a);display:flex;align-items:center;justify-content:center;font-size:26px}
+.steps{display:flex;gap:8px;margin-top:20px}.steps i{flex:1;height:7px;border-radius:4px;background:rgba(244,242,237,.12)}.steps i.on{background:#D2A94E}
+.q{font-family:Bri;font-weight:800;font-size:38px;margin-top:30px}
+.opt{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-radius:18px;background:rgba(244,242,237,.06);margin-top:14px;font-size:27px;border:3px solid transparent}
+.opt small{display:block;font-size:20px;color:#A9B0C4;margin-top:3px}
+.opt.sel{border-color:#D2A94E;background:rgba(210,169,78,.12)}
+.pr{font-family:Bri;font-weight:800;font-size:28px}
+.times{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.times span{text-align:center;padding:20px 0;border-radius:15px;background:rgba(244,242,237,.06);font-size:27px;font-weight:600;border:3px solid transparent}
+.times span.off{opacity:.25;text-decoration:line-through}
+.times span.sel{border-color:#D2A94E;background:rgba(210,169,78,.14);color:#D2A94E}
+.field{margin-top:16px;padding:20px 22px;border-radius:15px;background:rgba(244,242,237,.06);font-size:26px}
+.field small{display:block;font-size:19px;color:#A9B0C4;margin-bottom:4px}
+.summary{margin-top:20px;font-size:23px;color:#A9B0C4;line-height:1.5}
+.cta{margin-top:26px;text-align:center;padding:24px;border-radius:18px;background:#D2A94E;color:#0C1120;font-family:Bri;font-weight:800;font-size:30px}
+.done{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:110px}
+.tick{width:160px;height:160px;border-radius:50%;background:#D2A94E;color:#0C1120;display:flex;align-items:center;justify-content:center;font-family:Bri;font-weight:800;font-size:92px}
+.done h3{font-family:Bri;font-weight:800;font-size:44px;margin-top:36px}
+.done p{font-size:25px;color:#A9B0C4;margin-top:12px;line-height:1.45}
+.cal{margin-top:34px;padding:18px 28px;border-radius:16px;border:2px solid rgba(244,242,237,.2);font-weight:600;font-size:24px}
+/* hand */
+.skin{background:linear-gradient(160deg,#d9a585,#b67a5c)}
+#palm{position:absolute;left:150px;top:1480px;width:800px;height:700px;border-radius:340px 340px 0 0;z-index:2;opacity:0}
+.finger{position:absolute;width:110px;height:150px;border-radius:60px;z-index:4;opacity:0}
+#thumb{position:absolute;width:118px;height:330px;border-radius:60px 60px 54px 54px;z-index:5;transform-origin:50% 22px;opacity:0;box-shadow:-8px 14px 30px rgba(0,0,0,.35)}
+#thumb::after{content:'';position:absolute;left:24px;top:14px;width:70px;height:80px;border-radius:36px 36px 30px 30px;background:rgba(255,225,210,.45)}
+.ripple{position:absolute;width:90px;height:90px;border-radius:50%;border:4px solid rgba(255,255,255,.8);z-index:6;opacity:0;transform:translate(-50%,-50%)}
+.handle{position:absolute;left:0;right:0;bottom:110px;text-align:center;font-family:Bri;font-weight:600;font-size:32px;z-index:7}
+.handle span{color:#D2A94E}
+#cap{top:210px;font-size:66px;padding:0 70px;z-index:7}
+#cap2{top:430px;font-size:34px;z-index:7}
+</style></head><body>
+<div id="night"><div class="lamp"></div><div class="screenglow"></div><div class="duvet"></div></div>
+
+<div id="i1" class="el disp" style="top:640px;font-size:104px;padding:0 70px">O dinheiro não compra felicidade,</div>
+<div id="i2" class="el disp gold" style="top:1010px;font-size:150px">mas…</div>
+
+<div id="cap" class="el disp"></div>
+<div id="cap2" class="el muted"></div>
+
+<div id="palm" class="skin"></div>
+<div class="finger skin" id="f1" style="left:142px;top:880px"></div>
+<div class="finger skin" id="f2" style="left:134px;top:1050px"></div>
+<div class="finger skin" id="f3" style="left:142px;top:1220px"></div>
+
+<div id="phone">
+  <div class="sb"><span>23:47</span><span>●●● 5G ▮</span></div>
+  <div class="scr">
+    <div id="L0" class="layer">
+      <div class="prof"><div class="avatar">💈</div><div><div class="pname">barbearia.dobairro</div><div class="pstats">4 barbeiros · Lisboa</div></div></div>
+      <div class="bio">Cortes, barbas e fades desde 2014.<br>Marca online 👇<br><span id="lnk" class="link">marcaserv.com/barbearia-do-bairro</span></div>
+      <div class="grid"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div id="L1" class="layer">
+      <div class="bk-head"><div class="bk-logo">💈</div>Barbearia do Bairro</div>
+      <div class="steps"><i class="on"></i><i></i><i></i><i></i></div>
+      <div class="q">Escolhe o serviço</div>
+      <div id="o1" class="opt"><div>Corte<small>30 min</small></div><div class="pr">15 €</div></div>
+      <div class="opt"><div>Corte + barba<small>45 min</small></div><div class="pr">22 €</div></div>
+      <div class="opt"><div>Barba<small>20 min</small></div><div class="pr">10 €</div></div>
+    </div>
+    <div id="L2" class="layer">
+      <div class="bk-head"><div class="bk-logo">💈</div>Barbearia do Bairro</div>
+      <div class="steps"><i class="on"></i><i class="on"></i><i></i><i></i></div>
+      <div class="q">Com quem?</div>
+      <div class="opt"><div>Qualquer barbeiro<small>o primeiro livre</small></div></div>
+      <div id="o2" class="opt"><div>Rui</div></div>
+      <div class="opt"><div>Tiago</div></div>
+      <div class="opt"><div>Marco</div></div>
+    </div>
+    <div id="L3" class="layer">
+      <div class="bk-head"><div class="bk-logo">💈</div>Barbearia do Bairro</div>
+      <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+      <div class="q">Amanhã, quinta</div>
+      <div class="times"><span class="off">09:00</span><span class="off">09:30</span><span>10:00</span><span id="o3">10:30</span><span class="off">11:00</span><span>11:30</span><span class="off">12:00</span><span>14:00</span><span class="off">14:30</span></div>
+    </div>
+    <div id="L4" class="layer">
+      <div class="bk-head"><div class="bk-logo">💈</div>Barbearia do Bairro</div>
+      <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+      <div class="q">Os teus dados</div>
+      <div class="field"><small>Nome</small>Diogo</div>
+      <div class="field"><small>Email</small>diogo@email.pt</div>
+      <div class="summary">Corte · quinta às 10:30 · com Rui<br>Sem conta, sem password.</div>
+      <div id="o4" class="cta">Confirmar marcação</div>
+    </div>
+    <div id="L5" class="layer">
+      <div class="done"><div class="tick">✓</div><h3>Está marcado!</h3><p>Corte · quinta às 10:30<br>com Rui</p><div class="cal">＋ Adicionar ao calendário</div></div>
+    </div>
+  </div>
+</div>
+<div id="thumb" class="skin"></div>
+<div id="rip" class="ripple"></div>
+
+<div id="e1" class="el" style="top:640px;opacity:0">
+  <div class="disp" style="font-size:44px;color:#D2A94E;letter-spacing:.18em;font-family:Arc;font-weight:600">MARCASERV</div>
+  <div class="disp" style="font-size:96px;margin-top:34px;padding:0 80px">A tua barbearia a marcar enquanto dormes</div>
+  <div class="muted" style="font-size:40px;margin-top:44px;line-height:1.5">30 €/mês · todos os barbeiros incluídos<br>14 dias grátis, sem cartão</div>
+  <div class="gold disp" style="font-size:50px;margin-top:60px">link na bio ↑</div>
+</div>
+<div class="handle">@marca<span>.</span>serv</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>{x=clamp(x);return 1-Math.pow(1-x,3)};
+const back=x=>{x=clamp(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const win=(t,a,b,d=.3,d2=.25)=>Math.min(ease((t-a)/d),1-ease((t-b)/d2));
+const op=(id,o)=>{$(id).style.opacity=clamp(o)};
+function center(id){const r=$(id).getBoundingClientRect();return [r.left+r.width*.5,r.top+r.height*.5];}
+// tap schedule: [time, target id]
+const taps=[[3.9,'lnk'],[5.2,'o1'],[6.3,'o2'],[7.4,'o3'],[8.6,'o4']];
+const REST=[700,1560];
+function render(t){
+  // intro
+  op('i1',win(t,0.1,2.7,.35,.3)); $('i1').style.transform=`translateY(${(1-ease((t-.1)/.4))*40}px)`;
+  op('i2',win(t,1.2,2.7,.2,.3)); $('i2').style.transform=`scale(${.6+.4*back((t-1.2)/.35)})`;
+  // scene
+  const sc=win(t,2.8,11.4,.4,.35);
+  op('night',sc);
+  const ph=$('phone'); ph.style.opacity=sc; ph.style.transform=`translateY(${(1-ease((t-2.8)/.45))*200}px) rotate(-2deg)`;
+  ['palm','f1','f2','f3'].forEach(id=>{op(id,sc);$(id).style.transform=`translateY(${(1-ease((t-2.8)/.45))*200}px)`;});
+  // captions
+  let c='',c2='',co=0;
+  if(t>=2.9&&t<9.0){c='…compram uma barbearia que marca às 23:47.';c2='';co=win(t,2.9,8.9);}
+  else if(t>=9.0&&t<11.4){c='Cliente feliz 😌';c2='Barbeiro a dormir 😴';co=win(t,9.0,11.2);}
+  $('cap').textContent=c;$('cap2').textContent=c2;op('cap',co);op('cap2',co);
+  // layers
+  const L=[['L0',2.8,4.1],['L1',4.1,5.5],['L2',5.5,6.6],['L3',6.6,7.7],['L4',7.7,8.9],['L5',8.9,11.6]];
+  for(const [id,a,b] of L){op(id,win(t,a,b,.12,.12));}
+  $('L5').style.transform=`scale(${.92+.08*back((t-8.9)/.35)})`;
+  $('lnk').classList.toggle('hl',t>3.9&&t<4.2);
+  $('o1').classList.toggle('sel',t>5.2);
+  $('o2').classList.toggle('sel',t>6.3);
+  $('o3').classList.toggle('sel',t>7.4);
+  // thumb motion
+  let pos=REST.slice(),press=0;
+  const pts=taps.map(([tt,id])=>[tt,center(id)]);
+  // keyframes: rest -> each target (arrive at tt-0.05), stay till tt+0.2, then move toward next
+  let prev=[tt0=>0][0]; let from=REST, fromT=3.1;
+  for(let i=0;i<pts.length;i++){
+    const [tt,p]=pts[i];
+    const arrive=tt-0.05, leave=tt+0.25;
+    if(t<arrive){const k=ease((t-fromT)/(arrive-fromT)); pos=[from[0]+(p[0]-from[0])*k, from[1]+(p[1]-from[1])*k]; break;}
+    if(t<leave){pos=p.slice(); press=1-Math.abs((t-tt-.04)/.12); break;}
+    from=p; fromT=leave;
+    if(i===pts.length-1){const k=ease((t-leave)/.5); pos=[p[0]+(REST[0]+80-p[0])*k, p[1]+(REST[1]+120-p[1])*k];}
+  }
+  const th=$('thumb'); op('thumb',sc);
+  const pr=clamp(press);
+  th.style.left=(pos[0]-59+18)+'px'; th.style.top=(pos[1]-18+pr*6)+'px';
+  th.style.transform=`rotate(${-32+pr*4}deg) scale(${1-pr*.04})`;
+  // ripple
+  let ro=0,rs=1,rp=[0,0];
+  for(const [tt,p] of pts){if(t>tt&&t<tt+.35){const k=(t-tt)/.35;ro=1-k;rs=.4+k*.9;rp=p;}}
+  const R=$('rip');R.style.opacity=ro;R.style.left=rp[0]+'px';R.style.top=rp[1]+'px';R.style.transform=`translate(-50%,-50%) scale(${rs})`;
+  // end card
+  op('e1',ease((t-11.5)/.4)); $('e1').style.transform=`translateY(${(1-ease((t-11.5)/.4))*50}px)`;
+}
+window.render=render;render(0);
+</script></body></html>

@@ -1,0 +1,234 @@
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Bri;src:url(../node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Bri;src:url(../node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:Arc;src:url(../node_modules/@fontsource/archivo/files/archivo-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Arc;src:url(../node_modules/@fontsource/archivo/files/archivo-latin-600-normal.woff2);font-weight:600}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{background:#0C1120;color:#F4F2ED;font-family:Arc,'Noto Color Emoji',sans-serif;position:relative}
+.glow{position:absolute;width:1300px;height:1300px;border-radius:50%;background:radial-gradient(circle,rgba(210,169,78,.13),rgba(210,169,78,0) 68%);top:-420px;right:-460px}
+.glow2{position:absolute;width:1100px;height:1100px;border-radius:50%;background:radial-gradient(circle,rgba(60,90,160,.18),rgba(60,90,160,0) 70%);bottom:-420px;left:-420px}
+.el{position:absolute;left:0;right:0;will-change:transform,opacity}
+.disp{font-family:Bri,'Noto Color Emoji';font-weight:800;letter-spacing:-.03em;line-height:1.02}
+.gold{color:#D2A94E}
+.muted{color:#A9B0C4}
+.center{text-align:center}
+.eyebrow{font-family:Arc;font-weight:600;font-size:30px;letter-spacing:.2em;text-transform:uppercase;color:#D2A94E}
+
+/* phone */
+#phone{position:absolute;left:150px;top:470px;width:780px;height:1180px;border-radius:64px;background:#0F1628;border:2px solid rgba(244,242,237,.14);overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.55)}
+.sb{display:flex;justify-content:space-between;align-items:center;padding:30px 52px 0;font-family:Arc;font-weight:600;font-size:30px}
+.screen{position:absolute;left:0;right:0;top:92px;bottom:0;padding:26px 40px}
+/* profile */
+.prof{display:flex;gap:30px;align-items:center;margin-top:24px}
+.avatar{width:150px;height:150px;border-radius:50%;background:linear-gradient(135deg,#D2A94E,#8a6a2a);display:flex;align-items:center;justify-content:center;font-size:72px}
+.pname{font-family:Bri;font-weight:800;font-size:44px;letter-spacing:-.02em}
+.pstats{font-size:26px;color:#A9B0C4;margin-top:6px}
+.bio{margin-top:34px;font-size:32px;line-height:1.45}
+.bio b{font-weight:600}
+.btns{display:flex;gap:16px;margin-top:34px}
+.btn{flex:1;text-align:center;padding:22px 0;border-radius:18px;background:rgba(244,242,237,.08);font-weight:600;font-size:28px}
+.btn.hl{background:rgba(210,169,78,.18);color:#D2A94E;outline:3px solid #D2A94E}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:40px}
+.grid i{display:block;aspect-ratio:1;background:rgba(244,242,237,.06);border-radius:6px}
+/* chat */
+.chathead{display:flex;align-items:center;gap:20px;padding-bottom:22px;border-bottom:1px solid rgba(244,242,237,.1)}
+.chathead .av{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,#D2A94E,#8a6a2a);display:flex;align-items:center;justify-content:center;font-size:38px}
+.chathead b{font-family:Bri;font-weight:800;font-size:34px}
+.msgs{display:flex;flex-direction:column;gap:22px;margin-top:34px}
+.bub{max-width:78%;padding:22px 28px;border-radius:34px;font-size:32px;line-height:1.35}
+.bub.me{align-self:flex-end;background:#3E63DD;border-bottom-right-radius:10px}
+.bub.them{align-self:flex-start;background:rgba(244,242,237,.1);border-bottom-left-radius:10px}
+.stamp{align-self:center;font-size:24px;color:#7D859A;font-weight:600;letter-spacing:.04em}
+.seen{align-self:flex-end;font-size:22px;color:#7D859A;margin-top:-12px}
+/* booking */
+.bk-head{font-family:Bri;font-weight:800;font-size:38px;letter-spacing:-.02em;display:flex;align-items:center;gap:18px}
+.bk-logo{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#D2A94E,#8a6a2a);display:flex;align-items:center;justify-content:center;font-size:32px}
+.steps{display:flex;gap:10px;margin-top:26px}
+.steps i{flex:1;height:8px;border-radius:4px;background:rgba(244,242,237,.12)}
+.steps i.on{background:#D2A94E}
+.bk-q{font-family:Bri;font-weight:800;font-size:46px;margin-top:40px;letter-spacing:-.02em}
+.opt{display:flex;justify-content:space-between;align-items:center;padding:28px 30px;border-radius:22px;background:rgba(244,242,237,.06);margin-top:18px;font-size:32px;border:3px solid transparent}
+.opt small{display:block;font-size:24px;color:#A9B0C4;margin-top:4px}
+.opt.sel{border-color:#D2A94E;background:rgba(210,169,78,.12)}
+.opt .pr{font-family:Bri;font-weight:800;font-size:34px}
+.times{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.times span{text-align:center;padding:24px 0;border-radius:18px;background:rgba(244,242,237,.06);font-size:32px;font-weight:600;border:3px solid transparent}
+.times span.off{opacity:.25;text-decoration:line-through}
+.times span.sel{border-color:#D2A94E;background:rgba(210,169,78,.14);color:#D2A94E}
+.done{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:120px}
+.tick{width:190px;height:190px;border-radius:50%;background:#D2A94E;color:#0C1120;display:flex;align-items:center;justify-content:center;font-family:Bri;font-weight:800;font-size:110px}
+.done h3{font-family:Bri;font-weight:800;font-size:56px;margin-top:44px;letter-spacing:-.02em}
+.done p{font-size:32px;color:#A9B0C4;margin-top:16px;line-height:1.4}
+.layer{position:absolute;inset:0;padding:26px 40px}
+.handle{position:absolute;left:0;right:0;bottom:120px;text-align:center;font-family:Bri;font-weight:600;font-size:34px}
+.handle span{color:#D2A94E}
+.tap{position:absolute;width:90px;height:90px;border-radius:50%;background:rgba(244,242,237,.35);border:3px solid rgba(244,242,237,.8)}
+
+.stamp-lost{position:absolute;left:0;right:0;top:1270px;display:flex;justify-content:center;pointer-events:none}
+.stamp-lost div{font-family:Bri;font-weight:800;font-size:92px;letter-spacing:-.02em;color:#FF4B4B;border:10px solid #FF4B4B;border-radius:28px;padding:18px 44px;background:rgba(12,17,32,.82);transform:rotate(-8deg);box-shadow:0 0 80px rgba(255,75,75,.35)}
+.sol{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.sol .lbl{font-family:Arc;font-weight:600;font-size:34px;letter-spacing:.24em;text-transform:uppercase;color:#A9B0C4}
+.sol .big{font-family:Bri;font-weight:800;font-size:150px;letter-spacing:-.03em;color:#0C1120;background:#D2A94E;border-radius:36px;padding:26px 60px;margin-top:30px;box-shadow:0 0 120px rgba(210,169,78,.45)}
+</style></head><body>
+<div class="glow"></div><div class="glow2"></div>
+
+<!-- S0 title -->
+<div id="t0a" class="el center"><div class="eyebrow" style="font-size:34px">Cliente</div><div class="disp" style="font-size:170px;margin-top:10px">Gen Z</div></div>
+<div id="t0vs" class="el center disp gold" style="font-size:110px">vs</div>
+<div id="t0b" class="el center"><div class="eyebrow" style="font-size:34px">Barbearia</div><div class="disp" style="font-size:150px;margin-top:10px">Millennial</div></div>
+
+<!-- captions above phone -->
+<div id="cap" class="el center disp" style="top:200px;font-size:76px;padding:0 70px"></div>
+<div id="capsub" class="el center muted" style="top:390px;font-size:36px;font-family:Arc;font-weight:500"></div>
+
+<div id="phone">
+  <div class="sb"><span id="clock">23:47</span><span>●●● 5G ▮</span></div>
+  <div class="screen">
+    <!-- profile layer -->
+    <div id="L1" class="layer">
+      <div class="prof"><div class="avatar">💈</div><div><div class="pname">barbearia.dobairro</div><div class="pstats">4 barbeiros · Lisboa</div></div></div>
+      <div class="bio">Cortes, barbas e fades desde 2014.<br><b>📞 Marcações por telefone<br>Seg–Sáb · 9h–19h</b></div>
+      <div class="btns"><div id="btnCall" class="btn">Ligar</div><div id="btnMsg" class="btn">Mensagem</div></div>
+      <div class="grid"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <!-- chat layer -->
+    <div id="L2" class="layer">
+      <div class="chathead"><div class="av">💈</div><b>barbearia.dobairro</b></div>
+      <div class="msgs">
+        <div id="m1" class="bub me">boas! têm vaga amanhã de manhã?</div>
+        <div id="m1s" class="seen">Enviado 23:48</div>
+        <div id="ms" class="stamp">DIA SEGUINTE · 11:52</div>
+        <div id="m2" class="bub them">Bom dia! Amanhã já está tudo cheio 🙏 Só sexta à tarde</div>
+        <div id="m3" class="bub me">ah já marquei noutro lado 👋</div>
+      </div>
+    </div>
+    <!-- booking layers -->
+    <div id="B1" class="layer">
+      <div class="bk-head"><div class="bk-logo">💈</div>Barbearia do Bairro</div>
+      <div class="steps"><i class="on"></i><i></i><i></i></div>
+      <div class="bk-q">Escolhe o serviço</div>
+      <div id="o1" class="opt"><div>Corte<small>30 min</small></div><div class="pr">15 €</div></div>
+      <div class="opt"><div>Corte + barba<small>45 min</small></div><div class="pr">22 €</div></div>
+      <div class="opt"><div>Barba<small>20 min</small></div><div class="pr">10 €</div></div>
+    </div>
+    <div id="B2" class="layer">
+      <div class="bk-head"><div class="bk-logo">💈</div>Barbearia do Bairro</div>
+      <div class="steps"><i class="on"></i><i class="on"></i><i></i></div>
+      <div class="bk-q">Com quem?</div>
+      <div id="o2" class="opt"><div>Qualquer barbeiro<small>o primeiro livre</small></div><div class="pr">→</div></div>
+      <div class="opt"><div>Rui</div></div>
+      <div class="opt"><div>Tiago</div></div>
+      <div class="opt"><div>Marco</div></div>
+    </div>
+    <div id="B3" class="layer">
+      <div class="bk-head"><div class="bk-logo">💈</div>Barbearia do Bairro</div>
+      <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+      <div class="bk-q">Amanhã, quinta</div>
+      <div class="times"><span class="off">09:00</span><span class="off">09:30</span><span>10:00</span><span id="o3">10:30</span><span class="off">11:00</span><span>11:30</span><span class="off">12:00</span><span>14:00</span><span class="off">14:30</span></div>
+    </div>
+    <div id="B4" class="layer">
+      <div class="done"><div class="tick">✓</div><h3>Marcação confirmada</h3><p>Corte · amanhã às 10:30<br>Sem conta. Sem password.</p></div>
+    </div>
+  </div>
+  <div id="tap" class="tap"></div>
+</div>
+
+<!-- end card -->
+<div id="e1" class="el center disp" style="top:560px;font-size:96px;padding:0 80px">A Gen Z não liga.<br>Não espera.<br><span class="gold">Marca.</span></div>
+<div id="e2" class="el center" style="top:600px">
+  <div class="eyebrow">MarcaServ</div>
+  <div class="disp" style="font-size:92px;margin-top:30px;padding:0 90px">A tua barbearia a aceitar marcações às 23:47</div>
+  <div class="muted" style="font-size:40px;margin-top:44px;line-height:1.5">30 €/mês · todos os barbeiros incluídos<br>14 dias grátis, sem cartão</div>
+  <div class="gold" style="font-family:Bri;font-weight:800;font-size:48px;margin-top:60px">link na bio ↑</div>
+</div>
+<div id="lost" class="stamp-lost"><div>VENDA PERDIDA!</div></div>
+<div id="sol" class="sol"><div class="lbl">Agora</div><div class="big">A SOLUÇÃO</div></div>
+<div class="handle">@marca<span>.</span>serv</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>{x=clamp(x);return 1-Math.pow(1-x,3)};
+const back=x=>{x=clamp(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+// fade window: in at a (dur d), out at b (dur d2)
+function win(t,a,b,d=.35,d2=.3){return Math.min(ease((t-a)/d), 1-ease((t-b)/d2))}
+function set(id,o,ty=0,sc=1){const e=$(id);e.style.opacity=o;e.style.transform=`translateY(${ty}px) scale(${sc})`;}
+function render0(t){
+  // S0 title 0-2.6
+  const a0=win(t,0.1,2.4);
+  set('t0a',a0,(1-ease((t-.1)/.4))*60);$('t0a').style.top='560px';
+  set('t0vs',win(t,.5,2.4),0,.6+.4*back((t-.5)/.4));$('t0vs').style.top='840px';
+  set('t0b',win(t,.8,2.4),(1-ease((t-.8)/.4))*60);$('t0b').style.top='1010px';
+
+  // phone visible 2.6 - 18.2
+  const ph=win(t,2.6,17.9,.45,.35);
+  $('phone').style.opacity=ph;$('phone').style.transform=`translateY(${(1-ease((t-2.6)/.45))*160}px)`;
+
+  // captions
+  let cap='',sub='',co=0;
+  if(t>=2.8&&t<6.0){cap='23:47.';sub='Precisa de cortar o cabelo amanhã.';co=win(t,2.8,5.7);}
+  else if(t>=6.0&&t<8.6){cap='Ligar? 😳';sub='Nem pensar.';co=win(t,6.0,8.3);}
+  else if(t>=8.6&&t<13.6){cap='Manda mensagem.';sub='E fica à espera.';co=win(t,8.6,13.3);}
+  else if(t>=13.6&&t<18.0){cap='23:47.';sub='Marca em 10 segundos.';co=win(t,13.6,17.7);}
+  $('cap').textContent=cap;$('capsub').textContent=sub;
+  set('cap',co,(1-ease((t-2.8)/.4))*0);set('capsub',co*0.95);
+
+  // layers inside phone
+  set('L1',win(t,2.6,8.6,.01,.25));
+  set('L2',win(t,8.6,13.6,.25,.25));
+  set('B1',win(t,13.6,14.9,.25,.15));
+  set('B2',win(t,14.9,16.0,.15,.15));
+  set('B3',win(t,16.0,17.0,.15,.15));
+  set('B4',win(t,17.0,18.2,.15,.2),0,.92+.08*back((t-17.0)/.35));
+
+  // profile: call button highlight then shake no
+  $('btnCall').classList.toggle('hl',t>6.0&&t<8.6);
+  $('btnMsg').classList.toggle('hl',t>7.9&&t<8.6);
+
+  // clock
+  $('clock').textContent = t>=13.6 ? '23:47' : (t<11.0 ? (t<9.6?'23:47':'23:48') : '11:52');
+
+  // chat sequence
+  const pop=(id,a)=>set(id,ease((t-a)/.25),(1-ease((t-a)/.25))*24,.9+.1*back((t-a)/.3));
+  pop('m1',9.0); set('m1s',ease((t-9.5)/.3));
+  set('ms',ease((t-10.6)/.3));
+  pop('m2',11.2); pop('m3',12.5);
+
+  // booking selections
+  $('o1').classList.toggle('sel',t>14.2);
+  $('o2').classList.toggle('sel',t>15.4);
+  $('o3').classList.toggle('sel',t>16.5);
+
+  // tap indicator
+  let tp=null;
+  if(t>9.9&&t<10.1){}
+  const taps=[[6.15,165,493],[7.85,521,493],[14.15,330,350],[15.35,330,350],[16.45,108,442]];
+  let tapO=0,tx=0,ty=0;
+  for(const [tt,x,y] of taps){if(t>tt-.15&&t<tt+.35){tapO=1-Math.abs((t-tt-.1)/.25);tx=x;ty=y;}}
+  const tpEl=$('tap');tpEl.style.opacity=clamp(tapO);tpEl.style.left=tx+'px';tpEl.style.top=ty+'px';
+
+  // end cards
+  set('e1',win(t,18.2,20.6,.35,.3),(1-ease((t-18.2)/.4))*50);
+  set('e2',ease((t-20.7)/.4),(1-ease((t-20.7)/.4))*50);
+}
+const D=2.4;
+function render(t){
+  let tp = t<13.6 ? t : (t<13.6+D ? 13.55 : t-D);
+  render0(tp);
+  // VENDA PERDIDA stamp 12.9 -> 14.8
+  const lo=Math.min(clamp((t-12.9)/.12), 1-ease((t-14.65)/.2));
+  const sc=t<12.9?1.6:1.6-0.6*back((t-12.9)/.28);
+  const L=$('lost');L.style.opacity=clamp(lo);L.style.transform=`scale(${sc})`;
+  // A SOLUÇÃO 14.8 -> 16.0
+  const so=win(t,14.85,15.8,.25,.22);
+  const S=$('sol');S.style.opacity=so;S.style.transform=`scale(${.7+.3*back((t-14.85)/.35)})`;
+  if(t>=14.7&&t<16.0){ $('phone').style.opacity=Math.max(0,1-ease((t-14.7)/.2))*(t<15.9?1:0); $('cap').style.opacity=0;$('capsub').style.opacity=0;}
+  if(t>=15.9&&t<16.0){$('phone').style.opacity=0;}
+  // phone re-enters at 16.0
+  if(t>=16.0&&t<16.4){$('phone').style.opacity=ease((t-16.0)/.35);}
+}
+window.render=render;render(0);
+</script>
+</body></html>
