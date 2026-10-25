@@ -1,0 +1,108 @@
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Bri;src:url(../node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Bri;src:url(../node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:Arc;src:url(../node_modules/@fontsource/archivo/files/archivo-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Arc;src:url(../node_modules/@fontsource/archivo/files/archivo-latin-600-normal.woff2);font-weight:600}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{background:#0C1120;color:#F4F2ED;font-family:Arc,'Noto Color Emoji',sans-serif;position:relative}
+.glow{position:absolute;width:1300px;height:1300px;border-radius:50%;background:radial-gradient(circle,rgba(210,169,78,.13),rgba(210,169,78,0) 68%);top:-420px;right:-460px}
+.glow2{position:absolute;width:1100px;height:1100px;border-radius:50%;background:radial-gradient(circle,rgba(60,90,160,.18),rgba(60,90,160,0) 70%);bottom:-420px;left:-420px}
+.disp{font-family:Bri,'Noto Color Emoji';font-weight:800;letter-spacing:-.03em;line-height:1.04}
+.gold{color:#D2A94E}
+.eyebrow{font-family:Arc;font-weight:600;font-size:32px;letter-spacing:.2em;text-transform:uppercase;color:#D2A94E}
+.card{position:absolute;left:70px;width:860px;top:270px;height:1210px;border-radius:48px;padding:70px 64px;display:flex;flex-direction:column;opacity:0}
+.card.bad{background:#141B2E;border:2px solid rgba(244,242,237,.10)}
+.card.good{background:linear-gradient(160deg,#1B2032,#141B2E);border:3px solid #D2A94E}
+.ts{align-self:flex-start;font-family:Bri;font-weight:800;font-size:150px;letter-spacing:-.04em;line-height:1;display:flex;align-items:center;gap:22px}
+.rec{width:34px;height:34px;border-radius:50%;background:#FF4B4B}
+.good .rec{background:#D2A94E}
+.emo{font-size:300px;line-height:1;margin-top:auto;font-family:'Noto Color Emoji'}
+.txt{font-family:Bri;font-weight:800;font-size:76px;letter-spacing:-.025em;line-height:1.08;margin-top:50px;text-wrap:balance}
+.txt small{display:block;font-family:Arc;font-weight:500;font-size:46px;letter-spacing:0;color:#C9CDD8;margin-top:22px;line-height:1.35}
+.lbl{font-family:Arc;font-weight:600;font-size:28px;letter-spacing:.18em;text-transform:uppercase;color:#A9B0C4;margin-top:22px}
+.good .lbl{color:#D2A94E}
+.full{position:absolute;left:70px;right:150px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;opacity:0}
+.handle{position:absolute;left:0;right:0;top:1510px;text-align:center;font-family:Bri;font-weight:600;font-size:32px}
+.handle span{color:#D2A94E}
+#swap{background:#D2A94E;color:#0C1120;left:0;right:0;padding:0 90px;text-align:center;align-items:center}
+.mini{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:40px}
+.mini div{border-radius:12px;height:46px}
+</style></head><body>
+<div class="glow"></div><div class="glow2"></div>
+
+<div id="hook" class="full" style="padding-left:20px">
+  <div class="eyebrow">POV · vlog</div>
+  <div class="disp" style="font-size:112px;margin-top:30px">És dono de uma barbearia com <span class="gold">4 barbeiros.</span></div>
+  <div style="font-size:42px;color:#A9B0C4;margin-top:36px">Um dia normal ↓</div>
+</div>
+
+<div id="cards"></div>
+
+<div id="swap" class="full">
+  <div style="font-family:Arc;font-weight:600;font-size:34px;letter-spacing:.2em;text-transform:uppercase">Rebobina</div>
+  <div class="disp" style="font-size:118px;margin-top:26px">O mesmo dia.<br>Com MarcaServ.</div>
+</div>
+
+<div id="end" class="full" style="text-align:center;align-items:center;left:70px;right:70px">
+  <div class="eyebrow">MarcaServ</div>
+  <div class="disp" style="font-size:96px;margin-top:30px">Marcações online para a equipa toda</div>
+  <div style="font-size:42px;color:#A9B0C4;margin-top:44px;line-height:1.5">30 €/mês · profissionais ilimitados<br>14 dias grátis, sem cartão</div>
+  <div class="gold" style="font-family:Bri;font-weight:800;font-size:52px;margin-top:60px">link na bio ↑</div>
+</div>
+<div class="handle">@marca<span>.</span>serv</div>
+
+<script>
+const S=[
+ ['bad','09:00','📞','Abres a porta.','O telefone já está a tocar.'],
+ ['bad','09:47','✂️','A meio de um degradê.','Telefone. Outra vez.'],
+ ['bad','11:20','💬','3 mensagens:','«tens vaga hoje?»'],
+ ['bad','13:05','🥪','Almoço =','responder a mensagens.'],
+ ['bad','15:30','📒','Dois clientes para o Rui','à mesma hora.'],
+ ['bad','21:40','🛋️','No sofá,','ainda a combinar as marcações de amanhã.'],
+ ['good','09:00','☕','Abres o ecrã «Hoje».','Está lá tudo, em colunas por barbeiro.'],
+ ['good','11:20','📲','O cliente marca sozinho.','Só vê as horas livres do barbeiro que escolheu.'],
+ ['good','15:30','↔️','Imprevisto?','Arrastas a marcação e o cliente é avisado.'],
+ ['good','19:00','🔒','Fechas a porta.','E o telemóvel também.'],
+];
+const C=document.getElementById('cards');
+S.forEach((s,i)=>{const d=document.createElement('div');d.className='card '+s[0];d.id='c'+i;
+ const extra = (i==6)?'<div class="mini"><div style="background:#D2A94E"></div><div style="background:#6C8CE0"></div><div style="background:#5FB58A"></div><div style="background:#C77DD6"></div><div style="background:rgba(244,242,237,.08)"></div><div style="background:#6C8CE0"></div><div style="background:rgba(244,242,237,.08)"></div><div style="background:#C77DD6"></div></div>':'';
+ d.innerHTML=`<div class="ts"><span class="rec"></span>${s[1]}</div><div class="lbl">${s[0]=='bad'?'sem sistema':'com MarcaServ'}</div>${extra}<div class="emo">${s[2]}</div><div class="txt">${s[3]}<small>${s[4]}</small></div>`;
+ C.appendChild(d);});
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>{x=clamp(x);return 1-Math.pow(1-x,3)};
+const back=x=>{x=clamp(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+// timeline
+const HOOK=[0,1.9], STEP=1.4;
+const T=[];let t0=1.9;
+for(let i=0;i<6;i++){T.push(t0);t0+=STEP;}           // 1.9 .. 10.3
+const SWAP=[t0,t0+1.3]; t0+=1.3;                      // 10.3-11.6
+for(let i=6;i<10;i++){T.push(t0);t0+=STEP+0.15;}      // 11.6 .. 17.8
+const END=t0;                                         // 17.8
+window.DUR=END+2.8;
+window.CUTS=T.concat([SWAP[0],END]);
+function render(t){
+  const h=$('hook');h.style.opacity=Math.min(ease(t/.3),1-ease((t-HOOK[1]+.15)/.15));h.style.transform=`translateY(${(1-ease(t/.4))*50}px)`;
+  for(let i=0;i<10;i++){
+    const a=T[i], b=(i==5)?SWAP[0]:(i==9?END:T[i+1]);
+    const e=$('c'+i);
+    if(t<a-0.01||t>b+0.2){e.style.opacity=0;continue;}
+    // swipe in from right, out to left
+    const kin=ease((t-a)/.22), kout=ease((t-b)/.2);
+    const x=(1-kin)*1000 - kout*1000;
+    e.style.opacity=1;
+    e.style.transform=`translateX(${x}px) rotate(${(1-kin)*4-kout*4}deg)`;
+    const emo=e.querySelector('.emo');emo.style.transform=`scale(${.6+.4*back((t-a-.1)/.35)})`;
+    const ts=e.querySelector('.ts');ts.style.transform=`scale(${1+.08*Math.max(0,1-Math.abs((t-a-.25)/.12))})`;
+  }
+  const sw=$('swap');
+  const so=Math.min(ease((t-SWAP[0])/.15),1-ease((t-SWAP[1]+.1)/.15));
+  sw.style.opacity=t>=SWAP[0]&&t<SWAP[1]+.1?so:0;
+  sw.style.transform=`scale(${.9+.1*back((t-SWAP[0])/.3)})`;
+  const en=$('end');en.style.opacity=ease((t-END)/.35);en.style.transform=`translateY(${(1-ease((t-END)/.4))*50}px)`;
+}
+window.render=render;render(0);
+</script></body></html>
