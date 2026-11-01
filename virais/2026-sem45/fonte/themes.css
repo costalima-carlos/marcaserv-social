@@ -1,0 +1,28 @@
+
+body.cream{background:#F4F2ED;color:#0C1120}
+body.cream .glow,body.cream .glow2{display:none}
+body.cream .frame{border-color:rgba(12,17,32,.14)}
+body.cream .handle{color:#0C1120} body.cream .foot{border-top-color:rgba(12,17,32,.16)}
+body.cream .dot{background:rgba(12,17,32,.22)} body.cream .dot.on{background:#B48A30}
+body.gold{background:#D2A94E;color:#0C1120}
+body.gold .glow,body.gold .glow2{display:none}
+body.gold .frame{border-color:rgba(12,17,32,.18)}
+body.gold .handle,body.gold .handle span{color:#0C1120} body.gold .foot{border-top-color:rgba(12,17,32,.2)}
+body.gold .dot{background:rgba(12,17,32,.25)} body.gold .dot.on{background:#0C1120}
+.cv-eye{font-family:'Arc';font-weight:600;font-size:24px;letter-spacing:.2em;text-transform:uppercase}
+.cv-t{font-family:'Bri';font-weight:800;font-size:128px;line-height:.98;letter-spacing:-.035em;margin-top:34px;text-wrap:balance}
+.cv-t em{font-style:normal;color:#B48A30}
+body.gold .cv-t em{color:#F4F2ED}
+.cv-h{font-family:'Arc';font-weight:600;font-size:30px;margin-top:48px}
+.big-n{font-family:'Bri';font-weight:800;font-size:220px;line-height:.85;letter-spacing:-.05em;color:#D2A94E;display:flex;align-items:flex-end;gap:30px}
+.big-n span{font-family:'Noto Color Emoji';font-size:170px;letter-spacing:0;line-height:1}
+.ln{font-family:'Bri';font-weight:800;font-size:72px;line-height:1.06;letter-spacing:-.025em;margin-top:56px;text-wrap:balance}
+.ls{font-size:38px;line-height:1.45;color:#A9B0C4;margin-top:28px;max-width:24ch}
+.vs{display:grid;gap:22px;margin-top:44px}
+.vs div{border-radius:22px;padding:30px 34px;font-size:34px;line-height:1.4}
+.vs .bad{background:rgba(255,90,90,.08);border:2px solid rgba(255,90,90,.45)}
+.vs .good{background:rgba(210,169,78,.12);border:2px solid #D2A94E}
+.vs b{display:block;font-family:'Arc';font-weight:600;font-size:22px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+.vs .bad b{color:#FF7A7A} .vs .good b{color:#D2A94E}
+.price{font-family:'Bri';font-weight:800;font-size:46px;color:#D2A94E;margin-top:50px;letter-spacing:-.02em}
+.price small{display:block;font-family:'Arc';font-weight:500;font-size:28px;color:#A9B0C4;margin-top:10px;letter-spacing:0}
